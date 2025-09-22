@@ -105,14 +105,16 @@ const createMeme = (req, res) => {
     });
   }
 
-  if (!dataCriacao) {
+if (!dataCriacao) {
+  if (!dataCriacao <= 0 || dataCriacao >= 2025) {
     return res.status(400).json({
       success: false,
       message: "O campo 'dataCriacao' é obrigatório para criar um meme!",
     });
   }
+}
 
-  if (popularidade)
+  if (!popularidade)
     if (!popularidade <= 0 || popularidade >= 100) {
       return res.status(400).json({
         success: true,
@@ -136,7 +138,7 @@ const createMeme = (req, res) => {
     });
   }
 
-  if (!formato || !formatoLista.includes(tags)) {
+  if (!formato || !formatoLista.includes(formato)) {
     return res.status(400).json({
       success: false,
       message: `O campo 'formato' é obrigatório e deve ser uma das opções: ${formatoLista.join(
