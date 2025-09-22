@@ -5,6 +5,7 @@ import {
     getMemesById,
     createMeme,
     deleteMeme,
+    updateMeme,
   } from "../controllers/controllerMemes.js";
 
   const router = express.Router();
@@ -13,6 +14,7 @@ import {
   router.get("/:id",  getMemesById );
   router.post("/", createMeme);
   router.delete("/:id", deleteMeme);
+  router.put("/:id", updateMeme);
 
   export default router;
   
