@@ -105,14 +105,14 @@ const createMeme = (req, res) => {
     });
   }
 
-if (!dataCriacao) {
-  if (!dataCriacao <= 0 || dataCriacao >= 2025) {
-    return res.status(400).json({
-      success: false,
-      message: "O campo 'dataCriacao' é obrigatório para criar um meme!",
-    });
+  if (!dataCriacao) {
+    if (!dataCriacao <= 0 || dataCriacao >= 2025) {
+      return res.status(400).json({
+        success: false,
+        message: "O campo 'dataCriacao' é obrigatório para criar um meme!",
+      });
+    }
   }
-}
 
   if (!popularidade)
     if (!popularidade <= 0 || popularidade >= 100) {
@@ -337,14 +337,30 @@ const updateMeme = (req, res) => {
     return meme.id === id
       ? {
           ...meme,
-          ...(titulo && { titulo }),
-          ...(categoria && { categoria }),
-          ...(origem && { origem }),
-          ...(dataCriacao && { dataCriacao }),
-          ...(popularidade && { popularidade }),
-          ...(tags && { tags }),
-          ...(formato && { formato }),
-          ...(autor && { autor }),
+          ...(titulo && {
+            titulo,
+          }),
+          ...(categoria && {
+            categoria,
+          }),
+          ...(origem && {
+            origem,
+          }),
+          ...(dataCriacao && {
+            dataCriacao,
+          }),
+          ...(popularidade && {
+            popularidade,
+          }),
+          ...(tags && {
+            tags,
+          }),
+          ...(formato && {
+            formato,
+          }),
+          ...(autor && {
+            autor,
+          }),
         }
       : meme;
   });
